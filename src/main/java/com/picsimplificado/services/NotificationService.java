@@ -18,9 +18,10 @@ public class NotificationService {
         String email = user.getEmail();
         NotificationDTO notificationRequest = new NotificationDTO(email, message);
 
-        ResponseEntity<String> notificationResponse = restTemplate.getForEntity("https://o4d9z.mocklab.io/notify", notificationRequest, String.class);
+        ResponseEntity<String> notificationResponse = restTemplate.postForEntity("https://o4d9z.mocklab.io/notify", notificationRequest, String.class);
 
         if(!(notificationResponse.getStatusCode() == HttpStatus.OK)) {
+            System.out.println("Erro ao enviar notificação");
             throw new Exception("Erro ao enviar notificação");
         }
     }

@@ -1,12 +1,15 @@
 package com.picsimplificado.services;
 
 import com.picsimplificado.domain.user.User;
+import com.picsimplificado.dtos.UserDTO;
 import com.picsimplificado.enums.UserType;
 import com.picsimplificado.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Service
 public class UserService {
@@ -31,5 +34,16 @@ public class UserService {
 
     public void saveUser(User user) {
         this.userRepository.save(user);
+    }
+
+    public User createUser(UserDTO userDTO) {
+
+        User user = new User(userDTO);
+        this.saveUser(user);
+        return user;
+    }
+
+    public List<User> getAllUsers() {
+        return this.userRepository.findAll();
     }
 }

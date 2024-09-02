@@ -1,5 +1,6 @@
 package com.picsimplificado.domain.user;
 
+import com.picsimplificado.dtos.UserDTO;
 import com.picsimplificado.enums.UserType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -37,4 +38,14 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     private UserType userType;
+
+    public User(UserDTO userDTO) {
+        this.name = userDTO.name();
+        this.lastName = userDTO.lastName();
+        this.document = userDTO.document();
+        this.email = userDTO.email();
+        this.password = userDTO.password();
+        this.balance = userDTO.balance();
+        this.userType = userDTO.userType();
+    }
 }
