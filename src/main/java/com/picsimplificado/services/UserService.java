@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 
 @Service
-public class UsarService {
+public class UserService {
 
     @Autowired
     private UserRepository userRepository;
